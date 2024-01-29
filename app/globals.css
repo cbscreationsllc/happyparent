@@ -2,32 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.h-screen {
+  height: 100vh;
+  height: 100svh;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.h-screen-minus-64 {
+  height: calc(100vh - 64px); /* primary value */
+  height: calc(100svh - 64px); /* fallback value */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f2d1dc;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #88d8df;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f2d1dc;
+}
+
+/* CSS file */
+.thread-item {
+  border-color: #88d8df;
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+
+.thread-item-active {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.thread-item:hover {
+  border-top-width: 0.1px;
+  border-bottom-width: 0.1px;
 }
