@@ -10,7 +10,7 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useMainStore from "@/app/stores/mainStore";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import EmailVerification from "../../EmailVerification";
@@ -22,6 +22,11 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [pathname, setPathname] = useState("");
+
+  useEffect(() => {
+    setPathname(window.location.href);
+  }, []);
 
   function isValidEmail(email) {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -31,7 +36,9 @@ export default function Auth() {
   const signInWithEmailAndPasswordFn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (error) {}
+    } catch (error) {
+      alert("Invalid Password");
+    }
   };
 
   const createUserDocument = async (userId) => {
@@ -61,6 +68,7 @@ export default function Auth() {
   };
 
   const createAccountWithEmailAndPassword = async () => {
+    console.log(window.location.href);
     setLoading(true);
     try {
       const response = await createUserWithEmailAndPassword(
@@ -74,11 +82,13 @@ export default function Auth() {
       console.log(user);
 
       await sendEmailVerification(user, {
-        url: process.env.NEXT_PUBLIC_URL,
+        url: pathname,
       });
       console.log("email sent");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+
+      alert("Password should be at least 6 characters.");
     }
 
     setLoading(false);
