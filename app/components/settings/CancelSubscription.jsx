@@ -67,7 +67,7 @@ export default function CancelSubscription() {
               htmlFor="confirmationInput"
               className="text-sm font-normal mb-2 block text-center"
             >
-              Type "confirm" to continue
+              Type &quot;confirm&quot; to continue
             </label>
             <input
               autoCapitalize="off"
