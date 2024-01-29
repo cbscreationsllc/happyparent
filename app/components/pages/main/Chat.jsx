@@ -15,8 +15,9 @@ import {
   AutoSizer,
 } from "react-virtualized";
 import { ClipLoader, PulseLoader } from "react-spinners";
+import { useSearchParams } from "next/navigation";
 
-export default function Chat() {
+export default function Chat({ setOpen, setTitle, setText }) {
   const {
     user,
     setSubscriptionModalOpen,
@@ -40,8 +41,13 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState(false);
   const [messageLoading, setMessageLoading] = useState(false);
+  const searchParams = useSearchParams();
+
+  const [params, setParams] = useState("");
 
   useEffect(() => {
+    const redirect = searchParams.get("redirect");
+    setParams(redirect);
     if (threadId && !newMessage) getMessages();
   }, [threadId]);
 
@@ -99,12 +105,22 @@ export default function Chat() {
   const handleMessage = async () => {
     if (messageLoading) return;
     setMessageLoading(true);
-    if (!user?.subscription && user?.tokens < 400) {
+    if (!user?.subscription && user?.tokens < 400 && params != "success") {
       setSettingsScreen(4);
       setErrorMessage("nope");
       setSettingsModalOpen(true);
       setMessageLoading(false);
       return;
+    } else if (
+      !user?.subscription &&
+      user?.tokens < 400 &&
+      params == "success"
+    ) {
+      setOpen(true);
+      setTitle("Account Updating");
+      setText(
+        "We are still updating your account. One moment please. Contact cbscreationsllc@gmail.com if this pesists."
+      );
     }
 
     if (message.length == 0) {

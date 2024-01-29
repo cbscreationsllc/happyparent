@@ -21,15 +21,17 @@ export default function Home() {
     setBodyBackground,
     setOnboardScreen,
     setCode,
+    user,
+    setUser,
   } = useMainStore();
   const searchParams = useSearchParams();
   const [authLoaded, setAuthLoaded] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (userLocal) => {
       setTimeout(() => {
         setAuthLoaded(true);
-        if (user && user.emailVerified) {
+        if (userLocal && userLocal.emailVerified) {
           const redirect = searchParams.get("redirect");
           const code = searchParams.get("code");
           if (code) setCode(code);
@@ -40,14 +42,17 @@ export default function Home() {
           } else if (redirect === "paymentLink") {
             setCurrentScreen(4);
             setMainScreen(1);
+          } else if (redirect === "success") {
+            setCurrentScreen(4);
+            setMainScreen(1);
           } else {
             setCurrentScreen(4);
           }
-        } else if (user && !user.emailVerified) {
+        } else if (userLocal && !userLocal.emailVerified) {
           setCurrentScreen(2);
           setShowEmailModal(true);
           setBodyBackground("#F2D1DC");
-          waitForEmailVerification(user);
+          waitForEmailVerification(userLocal);
         } else {
           setCurrentScreen(1);
           setOnboardScreen(1);

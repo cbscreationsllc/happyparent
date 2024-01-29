@@ -25,6 +25,7 @@ import useThreadStore from "@/app/stores/threadStore";
 import ThreadsComponent from "../../ThreadsComponent";
 import { ClipLoader } from "react-spinners";
 import { motion } from "framer-motion";
+import PaymentSuccess from "../../PaymentSuccess";
 
 export default function Main() {
   const {
@@ -49,6 +50,9 @@ export default function Main() {
   const nameRef = useRef();
   const [currentName, setCurrentName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     const redirect = searchParams.get("redirect");
@@ -75,6 +79,15 @@ export default function Main() {
   const handleModal = ({ user, redirect }) => {
     if (redirect == "stripeLink") {
       setSubscriptionModalOpen(false);
+    } else if (redirect == "success") {
+      setSubscriptionModalOpen(false);
+      setTimeout(() => {
+        setOpen(true);
+        setText(
+          "Please allow us a few moments to update your account. Happy Parenting 🤗"
+        );
+        setTitle("Payment Successful");
+      }, 200);
     } else if (user?.tokens > 400 || user?.subscription)
       setSubscriptionModalOpen(false);
     else if (user?.tokens < 400 && user?.subscription) {
@@ -109,6 +122,14 @@ export default function Main() {
         <AffiliateModal />
         <SubscriptionModal />
         <SettingsModal />
+        <PaymentSuccess
+          open={open}
+          setOpen={setOpen}
+          title={title}
+          setTitle={setTitle}
+          text={text}
+          setText={setText}
+        />
         {showLearnMore && (
           <motion.div
             initial={{ y: -1000 }}
@@ -397,7 +418,9 @@ export default function Main() {
           </div>
 
           <main className="py-0 bg-white h-screen-minus-64">
-            {mainScreen == 1 && <Chat />}
+            {mainScreen == 1 && (
+              <Chat setOpen={setOpen} setText={setText} setTitle={setTitle} />
+            )}
             {mainScreen == 2 && <Affiliate />}
           </main>
         </div>
