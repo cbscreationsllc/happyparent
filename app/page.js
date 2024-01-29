@@ -70,7 +70,7 @@ export default function Home() {
         await user.reload();
         if (user.emailVerified) {
           clearInterval(interval);
-          await createUserDocument(user.uid);
+          await createUserDocument(user.uid, user.user.email);
           setCurrentScreen(4);
         }
       } catch (error) {
@@ -79,7 +79,7 @@ export default function Home() {
     }, 3000);
   };
 
-  const createUserDocument = async (userId) => {
+  const createUserDocument = async (userId, userEmail) => {
     try {
       const userDocRef = doc(db, "users", userId);
       const docSnap = await getDoc(userDocRef);
@@ -87,6 +87,7 @@ export default function Home() {
       if (!docSnap.exists()) {
         await setDoc(userDocRef, {
           userId,
+          userEmail,
           tokens: 0,
           affiliateCode: null,
           subscription: false,

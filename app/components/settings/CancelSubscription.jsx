@@ -6,9 +6,15 @@ import { ClipLoader } from "react-spinners";
 
 export default function CancelSubscription() {
   const [loading, setLoading] = useState(false);
+  const [val, setVal] = useState("");
   const { user, setSettingsScreen } = useMainStore();
 
   const cancelSubscription = async () => {
+    if (val.toLowerCase() != "confirm") {
+      alert("Please type confirm first");
+      return;
+    }
+
     setLoading(true);
     const functions = getFunctions();
     const cancelSubscriptionFn = httpsCallable(functions, "cancelSubscription");
@@ -46,7 +52,7 @@ export default function CancelSubscription() {
 
   return (
     <div className="mx-auto items-center">
-      <div className="bg-white sm:mx-8 lg:mx-0 rounded-t-3xl sm:rounded-b-none rounded-3xl  px-2 py-4">
+      <div className="bg-white sm:mx-8 lg:mx-0 rounded-t-3xl sm:rounded-b-none rounded-3xl px-2 py-4">
         <div className="flex flex-col items-center">
           <p className="text-xl font-semibold mb-4">Cancel Subscription</p>
           <p className="text-sm font-normal mb-4 text-center">
@@ -54,6 +60,25 @@ export default function CancelSubscription() {
             you sure you would like to cancel your subscription? This will take
             effect immediately.
           </p>
+
+          {/* Confirmation Input Section */}
+          <div className="w-full mb-4">
+            <label
+              htmlFor="confirmationInput"
+              className="text-sm font-normal mb-2 block text-center"
+            >
+              Type "confirm" to continue
+            </label>
+            <input
+              autoCapitalize="off"
+              id="confirmationInput"
+              value={val}
+              onChange={(e) => setVal(e.target.value)}
+              type="text"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Type 'confirm'"
+            />
+          </div>
         </div>
 
         <div

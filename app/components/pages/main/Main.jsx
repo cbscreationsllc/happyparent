@@ -79,12 +79,12 @@ export default function Main() {
   const handleModal = ({ user, redirect }) => {
     if (redirect == "stripeLink") {
       setSubscriptionModalOpen(false);
-    } else if (redirect == "success") {
+    } else if (redirect == "success" && user?.tokens < 400) {
       setSubscriptionModalOpen(false);
       setTimeout(() => {
         setOpen(true);
         setText(
-          "Please allow us a few moments to update your account. Happy Parenting 🤗"
+          "Please allow us a few minutes to update your account. Happy Parenting 🤗"
         );
         setTitle("Payment Successful");
       }, 200);

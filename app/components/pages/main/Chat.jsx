@@ -119,7 +119,7 @@ export default function Chat({ setOpen, setTitle, setText }) {
       setOpen(true);
       setTitle("Account Updating");
       setText(
-        "We are still updating your account. One moment please. Contact cbscreationsllc@gmail.com if this pesists."
+        "We are still updating your account. This can take anywhere from 1-5 minutes. Contact cbscreationsllc@gmail.com if this pesists."
       );
     }
 
@@ -222,7 +222,7 @@ export default function Chat({ setOpen, setTitle, setText }) {
     );
   };
   return (
-    <div className="bg-[#F2D1DC] h-full">
+    <div className="bg-[#F2D1DC] h-full overflow-hidden">
       <div className="h-[90%] flex flex-col items-center justify-center">
         {!user?.subscription && user?.tokens < 400 && (
           <>
