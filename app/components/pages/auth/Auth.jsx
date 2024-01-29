@@ -70,11 +70,16 @@ export default function Auth() {
       );
 
       const user = response.user;
+      console.log("user");
+      console.log(user);
 
       await sendEmailVerification(user, {
         url: process.env.NEXT_PUBLIC_URL,
       });
-    } catch (error) {}
+      console.log("email sent");
+    } catch (error) {
+      console.log(error);
+    }
 
     setLoading(false);
   };
