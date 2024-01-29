@@ -70,7 +70,7 @@ export default function Home() {
         await user.reload();
         if (user.emailVerified) {
           clearInterval(interval);
-          await createUserDocument(user.uid, user.user.email);
+          await createUserDocument(user.uid, user.email);
           setCurrentScreen(4);
         }
       } catch (error) {
