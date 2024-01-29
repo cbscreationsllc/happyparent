@@ -79,10 +79,9 @@ const ThreadsComponent = () => {
               setThreadToDelete(thread);
             }}
           >
-            {user?.subscription ||
-              (user?.tokens >= 400 && (
-                <TrashIcon className="h-5 w-5 text-red-300 mr-5" />
-              ))}
+            {(user?.subscription || user?.tokens >= 400) && (
+              <TrashIcon className="h-5 w-5 text-red-300 mr-5" />
+            )}
 
             {!user?.subscription && user?.tokens < 400 && (
               <LockClosedIcon className="h-5 w-5 text-red-300 mr-5" />
