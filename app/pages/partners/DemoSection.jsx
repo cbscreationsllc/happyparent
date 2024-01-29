@@ -8,7 +8,7 @@ export default function PartnerDemoSection() {
           Partner Program
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Join HappyParent's Affiliate Family
+          Join HappyParent&apos;s Affiliate Family
         </h1>
         <p className="mt-6 text-xl leading-8">
           Unlock a world of opportunity and impact by becoming a HappyParent
@@ -76,17 +76,17 @@ export default function PartnerDemoSection() {
             achieve earnings of $5k, $10k, $50k, or even over $100k monthly.
             Your success depends on how well you engage and sell to your
             audience. We have the innovative product; you have the influential
-            audience. That's why we believe in rewarding you with a 35%
+            audience. That&apos;s why we believe in rewarding you with a 35%
             commission rate.
           </p>
           <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
             Expand Your Impact, Grow Your Earnings
           </h2>
           <p className="mt-6">
-            As a HappyParent partner, you're not just earning; you're
-            empowering. You'll be introducing parents to an AI tool that offers
-            personalized, expert-backed parenting advice. Join us in our mission
-            to make parenting more informed and less stressful.
+            As a HappyParent partner, you&apos;re not just earning; you&apos;re
+            empowering. You&apos;ll be introducing parents to an AI tool that
+            offers personalized, expert-backed parenting advice. Join us in our
+            mission to make parenting more informed and less stressful.
           </p>
         </div>
       </div>

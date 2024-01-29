@@ -161,14 +161,14 @@ export default function IntroductionSection() {
               <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                 <div className="relative w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                    We’re making Parenting Easy.
+                    We&apos;re making Parenting Easy.
                   </h1>
                   <p className="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
                     Transforming parenting into a stress-free journey with our
-                    AI-driven expertise. It's like chatting with a seasoned
-                    expert, tailored to meet your family's unique needs. From
-                    developmental advice to daily parenting tips, make informed
-                    decisions with ease.
+                    AI-driven expertise. It&apos;s like chatting with a seasoned
+                    expert, tailored to meet your family&apos;s unique needs.
+                    From developmental advice to daily parenting tips, make
+                    informed decisions with ease.
                   </p>
                   <div className="mt-10 flex items-center gap-x-6">
                     <div

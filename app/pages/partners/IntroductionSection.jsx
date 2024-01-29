@@ -56,9 +56,9 @@ export default function PartnerIntroductionSection() {
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Step into a role where you empower parents with HappyParent - the
               AI companion redefining the parenting journey. As a partner,
-              you'll be the bridge connecting families to a world of AI-driven
-              advice and communal wisdom, helping them navigate parenthood with
-              confidence and joy.
+              you&apos;ll be the bridge connecting families to a world of
+              AI-driven advice and communal wisdom, helping them navigate
+              parenthood with confidence and joy.
             </p>
 
             <div className="mt-10 flex items-center justify-center gap-x-6">

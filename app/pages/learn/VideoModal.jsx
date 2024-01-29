@@ -1,11 +1,22 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 export default function VideoModal({ isOpen, setIsOpen }) {
+  const [w1, setW1] = useState(100);
+  const [w2, setW2] = useState(100);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setW1(window.screen.width - 100);
+      setW2(window.screen.availWidth - 100);
+    }
+  }, []);
+
   const opts = {
-    width: window.screen.width - 100,
+    width: w1,
     height: "390",
     playerVars: {
       autoplay: 1,
@@ -45,10 +56,7 @@ export default function VideoModal({ isOpen, setIsOpen }) {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6 w-screen">
-                <div
-                  className="h-[450px]"
-                  style={{ width: window.screen.availWidth - 100 }}
-                >
+                <div className="h-[450px]" style={{ width: w2 }}>
                   {isOpen && (
                     <div style={modalStyle} className="flex-col">
                       <p className="mb-5 text-center px-4">

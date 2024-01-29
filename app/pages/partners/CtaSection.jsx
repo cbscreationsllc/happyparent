@@ -19,10 +19,10 @@ export default function PartnerCtaSection() {
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
             Imagine tapping into a market of 1.4 billion new parents from the
             past 5 years. With 140 million babies born each year, the
-            opportunity is vast. Reach just 0.01% of these parents – that's not
-            even 1% – and you could be making over a million dollars a month.
-            Seize this incredible chance to impact lives and skyrocket your
-            earnings!
+            opportunity is vast. Reach just 0.01% of these parents – that&apos;s
+            not even 1% – and you could be making over a million dollars a
+            month. Seize this incredible chance to impact lives and skyrocket
+            your earnings!
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <div

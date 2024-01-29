@@ -26,9 +26,10 @@ export default function OnboardingSection() {
                 <strong className="font-semibold text-gray-900">
                   Step 1: Begin Onboarding.
                 </strong>{" "}
-                Click 'Become a Partner' on the 'Subscribe for Access' modal
-                when logged in. If you already have a subscription, or the modal
-                doesn't appear, navigate to 'Settings' in the nav bar.
+                Click &apos;Become a Partner&apos; on the &apos;Subscribe for
+                Access&apos; modal when logged in. If you already have a
+                subscription, or the modal doesn&apos;t appear, navigate to
+                &apos;Settings&apos; in the nav bar.
               </span>
             </li>
             <li className="flex gap-x-3">
@@ -41,7 +42,7 @@ export default function OnboardingSection() {
                   Step 2: Enter Invitation Code.
                 </strong>{" "}
                 Input your 5-digit invitation code. A valid code will redirect
-                you to Stripe's onboarding process.
+                you to Stripe&apos;s onboarding process.
               </span>
             </li>
             <li className="flex gap-x-3">
@@ -54,7 +55,7 @@ export default function OnboardingSection() {
                   Step 3: Complete Stripe Onboarding.
                 </strong>{" "}
                 Fill out the required information on Stripe. Upon completion,
-                you'll be redirected to your affiliate dashboard.
+                you&apos;ll be redirected to your affiliate dashboard.
               </span>
             </li>
 
@@ -67,13 +68,14 @@ export default function OnboardingSection() {
                 <strong className="font-semibold text-gray-900">
                   Step 4: Understand the Statement Descriptor.
                 </strong>{" "}
-                During Stripe's onboarding, you'll encounter the 'Statement
-                Descriptor' section. This is the text that will appear on your
-                subscribers' bank statements when they make a payment. It's
-                important to know that this will display 'HappyParent' to ensure
-                clarity and recognition for your subscribers. Whatever you enter
-                there will only matter if you create a stripe product and begin
-                selling on their platform.
+                During Stripe&apos;s onboarding, you&apos;ll encounter the
+                &apos;Statement Descriptor&apos; section. This is the text that
+                will appear on your subscribers&apos; bank statements when they
+                make a payment. It&apos;s important to know that this will
+                display &apos;HappyParent&apos; to ensure clarity and
+                recognition for your subscribers. Whatever you enter there will
+                only matter if you create a stripe product and begin selling on
+                their platform.
               </span>
             </li>
             <li className="flex gap-x-3">
@@ -85,19 +87,19 @@ export default function OnboardingSection() {
                 <strong className="font-semibold text-gray-900">
                   Step 5: Finalize Onboarding.
                 </strong>{" "}
-                If onboarding is successful, you'll see your affiliate code and
-                the option to copy your partner link. If not, a 'Complete
-                Onboarding' button will appear. Stripe may require multiple
-                attempts for verification.
+                If onboarding is successful, you&apos;ll see your affiliate code
+                and the option to copy your partner link. If not, a
+                &apos;Complete Onboarding&apos; button will appear. Stripe may
+                require multiple attempts for verification.
               </span>
             </li>
           </ul>
 
           <p className="mt-8">
-            Once completed, you're ready to use your partner code/link to direct
-            users to HappyParent. When users subscribe using your code, payments
-            will be made to your Stripe account, from which you can transfer
-            funds to your bank.
+            Once completed, you&apos;re ready to use your partner code/link to
+            direct users to HappyParent. When users subscribe using your code,
+            payments will be made to your Stripe account, from which you can
+            transfer funds to your bank.
           </p>
 
           <div className="mt-10 max-w-2xl">

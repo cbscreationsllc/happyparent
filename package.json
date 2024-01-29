@@ -22,6 +22,7 @@
     "react-spinners": "^0.13.8",
     "react-virtualized": "^9.22.5",
     "react-youtube": "^10.1.0",
+    "sharp": "^0.33.2",
     "zustand": "^4.5.0"
   },
   "devDependencies": {

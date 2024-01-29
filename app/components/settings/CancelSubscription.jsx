@@ -60,7 +60,7 @@ export default function CancelSubscription() {
           onClick={cancelSubscription}
           className="text-gray-600 border border-[#F2D1DC] mt-2 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer"
         >
-          {!loading && "I'm sure"}
+          {!loading && <div>I&apos;m sure</div>}
           {loading && <ClipLoader size={20} color="#F2D1DC" />}
         </div>
       </div>
