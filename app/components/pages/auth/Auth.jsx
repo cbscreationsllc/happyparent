@@ -2,7 +2,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { auth, db } from "@/firebase";
 import {
-  fetchSignInMethodsForEmail,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
@@ -15,6 +14,7 @@ import useMainStore from "@/app/stores/mainStore";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import EmailVerification from "../../EmailVerification";
 import { ClipLoader } from "react-spinners";
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 export default function Auth() {
   const { setCurrentScreen, setBodyBackground } = useMainStore();
@@ -34,11 +34,13 @@ export default function Auth() {
   }
 
   const signInWithEmailAndPasswordFn = async () => {
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       alert("Invalid Password");
     }
+    setLoading(false);
   };
 
   const createUserDocument = async (userId, userEmail) => {
@@ -49,7 +51,7 @@ export default function Auth() {
       if (!docSnap.exists()) {
         await setDoc(userDocRef, {
           userId,
-          userEmail,
+          userEmail: userEmail.toLowerCase(),
           tokens: 0,
           affiliateCode: null,
           subscription: false,
@@ -69,7 +71,6 @@ export default function Auth() {
   };
 
   const createAccountWithEmailAndPassword = async () => {
-    console.log(window.location.href);
     setLoading(true);
     try {
       const response = await createUserWithEmailAndPassword(
@@ -92,7 +93,7 @@ export default function Auth() {
       alert("Password should be at least 6 characters.");
     }
 
-    setLoading(false);
+    //setLoading(false);
   };
 
   const checkIfUserExists = async () => {
@@ -100,14 +101,22 @@ export default function Auth() {
       alert("Please enter a valid email");
       return;
     }
+
+    setLoading(true);
+    const functions = getFunctions();
+    const checkIfEmailExists = httpsCallable(functions, "checkIfEmailExists");
+
     try {
-      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
-      if (signInMethods.length == 0) {
-        setUser("nouser");
-      } else {
-        setUser("user");
-      }
-    } catch (error) {}
+      const res = await checkIfEmailExists({ email });
+
+      setUser(res.data);
+    } catch (error) {
+      alert(
+        "Oops, there was an error while checking for this email. Please try again."
+      );
+    }
+
+    setLoading(false);
   };
 
   const handleGoogleSignUp = async (e) => {
@@ -141,7 +150,7 @@ export default function Auth() {
       <h2 className="text-2xl font-semibold mt-10 md:mt-40">HappyParent</h2>
       <p className="text-lg font-normal mt-4">Parenting made easy</p>
 
-      <div className="w-full mt-20">
+      <div className="w-full mt-10">
         <label htmlFor="">Your email address</label>
         <input
           value={email}
@@ -195,11 +204,11 @@ export default function Auth() {
             : signInWithEmailAndPasswordFn
         }
       >
-        {user == "" ? (
+        {user == "" && !loading ? (
           "Continue"
         ) : user == "nouser" && !loading ? (
           "Create Account"
-        ) : user == "nouser" && loading ? (
+        ) : loading ? (
           <ClipLoader size={20} color="#F2D1DC" />
         ) : (
           "Login"

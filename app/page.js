@@ -87,7 +87,7 @@ export default function Home() {
       if (!docSnap.exists()) {
         await setDoc(userDocRef, {
           userId,
-          userEmail,
+          userEmail: userEmail.toLowerCase(),
           tokens: 0,
           affiliateCode: null,
           subscription: false,
