@@ -46,10 +46,13 @@ export default function EnterReferralCode() {
         uid: auth.currentUser.uid,
         stripeCustomerId,
       });
+      console.log(response);
+      console.log(response.data);
       const sessionId = response.data.sessionId;
       const stripe = await stripePromise;
       await stripe.redirectToCheckout({ sessionId });
     } catch (error) {
+      console.log(error);
       if (error.message == "Referral code does not exist.") {
         setInvalidCode(true);
       } else {
