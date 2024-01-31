@@ -66,7 +66,7 @@ export default function PartnerDemoSection() {
                 <strong className="font-semibold text-gray-900">
                   Onboarding Perks.
                 </strong>{" "}
-                Receive around 50 free questions to familiarize yourself with
+                Receive around 25 free questions to familiarize yourself with
                 the platform after completing the onboarding process.
               </span>
             </li>

@@ -26,6 +26,7 @@ import ThreadsComponent from "../../ThreadsComponent";
 import { ClipLoader } from "react-spinners";
 import { motion } from "framer-motion";
 import PaymentSuccess from "../../PaymentSuccess";
+import PaymentFailed from "../../PaymentFailed";
 
 export default function Main() {
   const {
@@ -53,6 +54,7 @@ export default function Main() {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
+  const [paymentFailed, setPaymentFailed] = useState(false);
 
   useEffect(() => {
     const redirect = searchParams.get("redirect");
@@ -77,6 +79,14 @@ export default function Main() {
   }, []);
 
   const handleModal = ({ user, redirect }) => {
+    console.log("handle modal");
+    console.log(user);
+    if (user?.paymentFailed) {
+      console.log("yessir");
+      setPaymentFailed(true);
+      return;
+    }
+
     if (redirect == "stripeLink") {
       setSubscriptionModalOpen(false);
     } else if (redirect == "success" && user?.tokens < 400) {
@@ -130,6 +140,7 @@ export default function Main() {
           text={text}
           setText={setText}
         />
+        <PaymentFailed open={paymentFailed} setOpen={setPaymentFailed} />
         {showLearnMore && (
           <motion.div
             initial={{ y: -1000 }}
