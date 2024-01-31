@@ -121,6 +121,7 @@ export default function Chat({ setOpen, setTitle, setText }) {
       setText(
         "We are still updating your account. This can take anywhere from 1-5 minutes. Contact cbscreationsllc@gmail.com if this pesists."
       );
+      return;
     }
 
     if (message.length == 0) {

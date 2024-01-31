@@ -94,7 +94,7 @@ export default function Main() {
       setTimeout(() => {
         setOpen(true);
         setText(
-          "Please allow us a few minutes to update your account. Happy Parenting 🤗"
+          "Please allow us a few minutes to update your account. This can take between 1-5 minutes. Happy Parenting 🤗"
         );
         setTitle("Payment Successful");
       }, 200);
