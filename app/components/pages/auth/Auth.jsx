@@ -37,7 +37,17 @@ export default function Auth() {
   const signInWithEmailAndPasswordFn = async () => {
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const functions = getFunctions();
+      const checkIfUserDocExists = httpsCallable(
+        functions,
+        "checkIfUserDocExists"
+      );
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      const response = checkIfUserDocExists({ uid: user.user.uid });
+
+      if (!response.data) {
+        await createUserDocument(user.user.uid, email);
+      }
     } catch (error) {
       alert("Invalid Password");
     }
