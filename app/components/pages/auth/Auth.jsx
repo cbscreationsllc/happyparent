@@ -43,7 +43,7 @@ export default function Auth() {
         "checkIfUserDocExists"
       );
       const user = await signInWithEmailAndPassword(auth, email, password);
-      const response = checkIfUserDocExists({ uid: user.user.uid });
+      const response = await checkIfUserDocExists({ uid: user.user.uid });
 
       if (!response.data) {
         await createUserDocument(user.user.uid, email);
