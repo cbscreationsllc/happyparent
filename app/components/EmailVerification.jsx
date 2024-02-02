@@ -1,12 +1,24 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import useMainStore from "../stores/mainStore";
 import { ClipLoader } from "react-spinners";
 import { auth } from "@/firebase";
-import { deleteUser } from "firebase/auth";
+import { deleteUser, sendEmailVerification } from "firebase/auth";
 
 export default function EmailVerification() {
   const { showEmailModal, setShowEmailModal } = useMainStore();
+  const [showButton, setShowButton] = useState(true);
+
+  const resend = async () => {
+    try {
+      sendEmailVerification(auth.currentUser, {
+        url: "https://happyparent.vercel.app/",
+      });
+      setShowButton(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const deleteAccount = async () => {
     try {
@@ -57,12 +69,29 @@ export default function EmailVerification() {
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
                         An email has been sent to you. Please go verify this
-                        email.
+                        email. Check your spam folder if you do not see it.
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6">
+                  {showButton && (
+                    <button
+                      onClick={resend}
+                      type="button"
+                      className="inline-flex w-full justify-center rounded-md bg-[#88D8DF] px-3 py-2 text-sm font-semibold text-white shadow-sm "
+                    >
+                      Resend Email
+                    </button>
+                  )}
+
+                  {!showButton && (
+                    <p className="text-sm text-gray-500 text-center">
+                      Email resent.
+                    </p>
+                  )}
+                </div>
+                <div className="mt-2 sm:mt-6">
                   <button
                     onClick={deleteAccount}
                     type="button"

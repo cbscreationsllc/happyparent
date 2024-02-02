@@ -23,6 +23,7 @@ export default function Auth() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [pathname, setPathname] = useState("");
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setPathname(window.location.href);
@@ -108,6 +109,8 @@ export default function Auth() {
 
     try {
       const res = await checkIfEmailExists({ email });
+
+      console.log(res.data);
 
       setUser(res.data);
     } catch (error) {
