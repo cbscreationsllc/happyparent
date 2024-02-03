@@ -31,6 +31,13 @@ export default function IntroductionSection() {
     }, 850);
   }, []);
 
+  const scrollToElement = () => {
+    const element = document.getElementById("demo");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className="bg-white">
       {showDiv && (
@@ -178,10 +185,10 @@ export default function IntroductionSection() {
                       Get started
                     </div>
                     <div
-                      onClick={() => setIsOpen(true)}
+                      onClick={scrollToElement}
                       className="text-sm font-semibold leading-6 text-gray-900"
                     >
-                      Quick Video Demo <span aria-hidden="true">→</span>
+                      View Example Questions <span aria-hidden="true">→</span>
                     </div>
                   </div>
 
