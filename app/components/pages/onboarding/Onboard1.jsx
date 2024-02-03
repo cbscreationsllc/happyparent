@@ -39,8 +39,8 @@ export default function Onboard1() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
       >
-        <h3 className="font-bold text-5xl lg:px-72">You have</h3>
-        <h3 className="font-bold text-5xl mt-1 lg:px-72">questions</h3>
+        <h3 className="font-bold text-5xl lg:px-72">Parenting</h3>
+        <h3 className="font-bold text-5xl mt-1 lg:px-72">questions?</h3>
       </motion.div>
 
       <motion.h6
