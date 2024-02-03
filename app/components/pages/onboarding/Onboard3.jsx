@@ -44,7 +44,7 @@ export default function Onboard3() {
         transition={{ duration: 1, ease: "easeInOut" }}
         className="font-normal text-lg mt-8 lg:px-72"
       >
-        parenting is something to enjoy, let ParentPal handle the stressful
+        parenting is something to enjoy, let HappyParent handle the stressful
         situations for you. Get started today.
       </motion.h6>
 
