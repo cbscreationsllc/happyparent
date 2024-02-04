@@ -88,7 +88,7 @@ export default function Home() {
         await setDoc(userDocRef, {
           userId,
           userEmail: userEmail.toLowerCase(),
-          tokens: 0,
+          tokens: 3000,
           affiliateCode: null,
           subscription: false,
           stripeAccountId: null,
@@ -113,8 +113,8 @@ export default function Home() {
 
   return (
     <>
-      {currentScreen == 1 && <Onboard />}
-      {currentScreen == 2 && <Auth />}
+      {currentScreen == 2 && <Onboard />}
+      {currentScreen == 1 && <Auth />}
       {currentScreen == 3 && <Subscription />}
       {currentScreen == 4 && <Main />}
       {currentScreen == 5 && <Splash />}

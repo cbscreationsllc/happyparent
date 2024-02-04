@@ -63,7 +63,7 @@ export default function Auth() {
         await setDoc(userDocRef, {
           userId,
           userEmail: userEmail.toLowerCase(),
-          tokens: 0,
+          tokens: 3000,
           affiliateCode: null,
           subscription: false,
           stripeAccountId: null,
