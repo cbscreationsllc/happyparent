@@ -88,7 +88,7 @@ export default function Subscription() {
           <p className="mt-4 flex items-baseline gap-x-1">
             <span className="text-gray-900 text-base font-regular tracking-tight">
               {user?.affiliateCode && "$10"}
-              {!user?.affiliateCode && "$7.99"}
+              {!user?.affiliateCode && "$25"}
             </span>
             <span className="text-gray-500 text-base">/</span>
             <span className="text-gray-500 text-base">month</span>
