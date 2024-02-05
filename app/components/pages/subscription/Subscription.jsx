@@ -113,7 +113,7 @@ export default function Subscription() {
           ))}
         </ul>
         <div
-          onClick={continueToPayment}
+          onClick={() => setSubscriptionScreen(2)}
           className="text-gray-600 border border-[#88D8DF] mt-8 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer"
         >
           {!loading && "Get Started Today"}
@@ -127,13 +127,13 @@ export default function Subscription() {
           Learn More
         </div>
 
-        {/* <div
+        <div
           onClick={handlePartnerClick}
           className="text-gray-600 border border-[#F2D1DC] mt-2 block rounded-md py-2.5 px-3.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer"
         >
           {user?.stripeAccountId && "Partner Dashboard"}
           {!user?.stripeAccountId && "Become a Partner"}
-        </div> */}
+        </div>
       </div>
     </div>
   );
